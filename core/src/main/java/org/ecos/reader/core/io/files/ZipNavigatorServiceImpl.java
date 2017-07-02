@@ -1,6 +1,6 @@
-package reader.ecos.org.core.io.files;
+package org.ecos.reader.core.io.files;
 
-import reader.ecos.org.core.io.files.exceptions.DoNoExistsExcepiton;
+import org.ecos.reader.core.io.files.exceptions.DoNoExistsExcepiton;
 
 @SuppressWarnings("unused")
 public class ZipNavigatorServiceImpl implements ZipNavigatorService {

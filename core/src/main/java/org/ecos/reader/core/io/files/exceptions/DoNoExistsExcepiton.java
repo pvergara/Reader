@@ -1,4 +1,4 @@
-package reader.ecos.org.core.io.files.exceptions;
+package org.ecos.reader.core.io.files.exceptions;
 
 public class DoNoExistsExcepiton extends Throwable {
     public DoNoExistsExcepiton(String message) {

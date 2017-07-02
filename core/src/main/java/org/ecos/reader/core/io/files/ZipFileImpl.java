@@ -1,4 +1,4 @@
-package reader.ecos.org.core.io.files;
+package org.ecos.reader.core.io.files;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
