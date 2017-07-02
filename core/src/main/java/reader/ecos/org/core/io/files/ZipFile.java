@@ -1,8 +1,8 @@
 package reader.ecos.org.core.io.files;
 
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings("unused")
 public interface ZipFile {
-    void prepareTheUse(File file);
+    void prepareToUse(File file);
     boolean exists();
 }

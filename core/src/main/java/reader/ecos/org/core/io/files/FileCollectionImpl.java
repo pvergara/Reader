@@ -1,5 +1,5 @@
 package reader.ecos.org.core.io.files;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class FileCollectionImpl implements FileCollection {
 }

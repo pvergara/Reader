@@ -11,7 +11,7 @@ public class ZipFileImpl implements ZipFile {
     private File mFileToWorkWith;
 
     @Override
-    public void prepareTheUse(File file) {
+    public void prepareToUse(File file) {
         mFileToWorkWith = file;
     }
 
