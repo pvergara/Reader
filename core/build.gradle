@@ -13,11 +13,6 @@ dependencies {
     testCompile 'org.hamcrest:hamcrest-library:1.3'
 }
 
-task copyResourcesToClasses(type: Copy) {
-    from "${projectDir}/src/test/resources"
-    into "${buildDir}/intermediates/classes/test/debug/resources"
-}
-
 buildscript {
     repositories {
         mavenCentral()
