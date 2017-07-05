@@ -22,7 +22,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @SuppressWarnings("SpellCheckingInspection")
-public class LearningTests {
+public class TestToLearn {
 
     private byte[] buffer;
 
@@ -48,7 +48,6 @@ public class LearningTests {
         ClassLoader classLoader = getClass().getClassLoader();
 
         URL resourceUrl = classLoader.getResource("historia_de_la_vida_del_buscOn_llamado_don_pablos.epub");
-        Path outDir = Paths.get("/home/pvergara/tmp/");//Paths.get(args[1]);
         File file = new File(resourceUrl.getPath());
 
         try(
@@ -74,23 +73,6 @@ public class LearningTests {
 
                 System.out.println(fileInfo);
 
-//                Path filePath = outDir.resolve(entry.getName());
-//
-//                // Now we can read the file data from the stream. We now
-//                // treat the stream like a usual input stream reading from
-//                // it until it returns 0 or less.
-//                try (
-//                        FileOutputStream output = new FileOutputStream(filePath.toFile())
-//                )
-//                {
-//                    int len;
-//                    while ((len = stream.read(buffer)) > 0)
-//                    {
-//                        output.write(buffer, 0, len);
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
             }
         } catch (IOException e) {
             System.out.println("CABOOOOOM!!!!!");
