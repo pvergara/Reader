@@ -5,12 +5,8 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Locale;
 import java.util.zip.ZipEntry;
@@ -23,12 +19,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class TestToLearn {
-
-    private byte[] buffer;
-
     @BeforeMethod
     public void setUp() throws Exception {
-        buffer = new byte[2048];
     }
 
     @Test
