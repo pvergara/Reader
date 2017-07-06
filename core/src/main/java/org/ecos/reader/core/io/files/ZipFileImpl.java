@@ -35,4 +35,9 @@ public class ZipFileImpl implements ZipFile {
         }
         return true;
     }
+
+    @Override
+    public FileCollection getFiles() {
+        return null;
+    }
 }
