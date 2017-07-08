@@ -3,6 +3,7 @@ package org.ecos.reader.core.io.files;
 import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -24,16 +25,9 @@ public class ZipFileImpl implements ZipFile {
     public boolean exists() {
         String filesPathAsString = getFilePathAsString();
 
-        try(ZipInputStream stream = new ZipInputStream(new FileInputStream(filesPathAsString)))
-        {
-            ZipEntry entry;
-            FileCollection collectionOfInnerFiles = new FileCollectionImpl();
-            while((entry = stream.getNextEntry())!=null)
-            {
-                collectionOfInnerFiles.add(FileImpl.from(PathImpl.from(entry.getName())));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        try {
+            new FileInputStream(filesPathAsString);
+        } catch (FileNotFoundException e) {
             return false;
         }
         return true;

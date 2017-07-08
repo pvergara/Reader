@@ -8,6 +8,7 @@ import org.ecos.reader.core.io.files.PathImpl;
 import org.ecos.reader.core.io.files.ZipFile;
 import org.ecos.reader.core.io.files.ZipFileImpl;
 import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.net.URL;
@@ -20,6 +21,8 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
 
 public class ZipFileTests {
+    private ZipFile mAnyZipFile;
+    private File mFile;
 
     // -- ----------------------------------------------------------------------------------- --
     // BEWARE OF THIS: UNTIL I FIND A SOLUTION TO TESTS THE SUITE YOU MUST TO "RE-SYNC" THE
@@ -28,21 +31,23 @@ public class ZipFileTests {
     // "NOT CLASS FOUND EXCEPTION"
     // -- ----------------------------------------------------------------------------------- --
 
+    @BeforeMethod
+    public void setUp() throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        mAnyZipFile = new ZipFileImpl();
+        String resourceName = "historia_de_la_vida_del_buscOn_llamado_don_pablos.epub";
+        URL resourceUrl = classLoader.getResource(resourceName);
+        Path path = PathImpl.from(resourceUrl.getPath());
+        mFile = FileImpl.from(path);
+    }
+
     @Test
     public void exists(){
         //Arrange
-        ClassLoader classLoader = getClass().getClassLoader();
-
-        ZipFile epubFile = new ZipFileImpl();
-        String resourceName = "historia_de_la_vida_del_buscOn_llamado_don_pablos.epub";
-        URL resourceUrl = classLoader.getResource(resourceName);
-
-        Path path = PathImpl.from(resourceUrl.getPath());
-        File file = FileImpl.from(path);
-        epubFile.prepareToUse(file);
+        mAnyZipFile.prepareToUse(mFile);
 
         //Act
-        boolean actual = epubFile.exists();
+        boolean actual = mAnyZipFile.exists();
 
         //Assertions
         assertThat(actual,is(true));
@@ -51,14 +56,12 @@ public class ZipFileTests {
     @Test
     public void doesNotExists(){
         //Arrange
-        ZipFile epubFile = new ZipFileImpl();
-
         Path path = PathImpl.from("INVENTED_FILE_PATH");
         File file = FileImpl.from(path);
-        epubFile.prepareToUse(file);
+        mAnyZipFile.prepareToUse(file);
 
         //Act
-        boolean actual = epubFile.exists();
+        boolean actual = mAnyZipFile.exists();
 
         //Assertions
         assertThat(actual,is(false));
@@ -67,18 +70,10 @@ public class ZipFileTests {
     @Test
     public void gettingTheDifferentFilesInsideTheZip() throws DoNoExistsException, UnknownError {
         //Arrange
-        ClassLoader classLoader = getClass().getClassLoader();
-
-        ZipFile epubFile = new ZipFileImpl();
-        String resourceName = "historia_de_la_vida_del_buscOn_llamado_don_pablos.epub";
-        URL resourceUrl = classLoader.getResource(resourceName);
-
-        Path path = PathImpl.from(resourceUrl.getPath());
-        File file = FileImpl.from(path);
-        epubFile.prepareToUse(file);
+        mAnyZipFile.prepareToUse(mFile);
 
         //Act
-        FileCollection collectionOfInnerFiles = epubFile.getFiles();
+        FileCollection collectionOfInnerFiles = mAnyZipFile.getFiles();
 
         //Assertions
         assertThat(collectionOfInnerFiles,hasSize(10));
