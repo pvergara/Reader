@@ -15,9 +15,8 @@ import java.net.URL;
 import reader.ecos.org.core.io.files.exceptions.UnknownError;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
 
 public class ZipFileTests {
@@ -82,8 +81,16 @@ public class ZipFileTests {
         FileCollection collectionOfInnerFiles = epubFile.getFiles();
 
         //Assertions
-        assertThat(collectionOfInnerFiles,is(not(nullValue())));
-
         assertThat(collectionOfInnerFiles,hasSize(10));
+        assertThat(collectionOfInnerFiles.getPathsAsString(),containsInAnyOrder("mimetype",
+                "META-INF/container.xml",
+                "OEBPS/pgepub.css",
+                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-0.txt.html",
+                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-1.txt.html",
+                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-2.txt.html",
+                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-3.txt.html",
+                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-4.txt.html",
+                "OEBPS/toc.ncx",
+                "OEBPS/content.opf"));
     }
 }

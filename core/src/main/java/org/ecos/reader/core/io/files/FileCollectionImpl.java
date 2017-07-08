@@ -1,20 +1,17 @@
 package org.ecos.reader.core.io.files;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
 public class FileCollectionImpl
     extends AbstractCollection<File>
     implements FileCollection
 {
     private Collection<File> mCollectionOfFiles;
 
-    public FileCollectionImpl() {
+    FileCollectionImpl() {
         mCollectionOfFiles = new ArrayList<>();
     }
 
@@ -23,8 +20,8 @@ public class FileCollectionImpl
         return mCollectionOfFiles.add(file);
     }
 
+    @SuppressWarnings("NullableProblems")
     @Override
-    @NotNull
     public Iterator<File> iterator() {
         return mCollectionOfFiles.iterator();
     }
@@ -32,5 +29,14 @@ public class FileCollectionImpl
     @Override
     public int size() {
         return mCollectionOfFiles.size();
+    }
+
+    @Override
+    public Collection<String> getPathsAsString() {
+        Collection<String> result = new ArrayList<>();
+        for (File item : mCollectionOfFiles) {
+            result.add(item.getPath().asString());
+        }
+        return result;
     }
 }

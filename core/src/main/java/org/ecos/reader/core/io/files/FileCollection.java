@@ -4,4 +4,5 @@ import java.util.Collection;
 
 @SuppressWarnings("WeakerAccess")
 public interface FileCollection extends Collection<File> {
+    Collection<String> getPathsAsString();
 }
