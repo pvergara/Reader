@@ -8,18 +8,18 @@ import org.ecos.reader.core.io.files.PathImpl;
 import org.ecos.reader.core.io.files.ZipFile;
 import org.ecos.reader.core.io.files.ZipFileImpl;
 import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
+import org.ecos.reader.core.io.files.exceptions.UnknownError;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.net.URL;
-
-import reader.ecos.org.core.io.files.exceptions.UnknownError;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class ZipFileTests {
     private ZipFile mAnyZipFile;
     private File mFile;
@@ -37,8 +37,8 @@ public class ZipFileTests {
         mAnyZipFile = new ZipFileImpl();
         String resourceName = "historia_de_la_vida_del_buscOn_llamado_don_pablos.epub";
         URL resourceUrl = classLoader.getResource(resourceName);
-        Path path = PathImpl.from(resourceUrl.getPath());
-        mFile = FileImpl.from(path);
+        Path path = PathImpl.Companion.from(resourceUrl.getPath());
+        mFile = FileImpl.Companion.from(path);
     }
 
     @Test
@@ -56,8 +56,8 @@ public class ZipFileTests {
     @Test
     public void doesNotExists(){
         //Arrange
-        Path path = PathImpl.from("INVENTED_FILE_PATH");
-        File file = FileImpl.from(path);
+        Path path = PathImpl.Companion.from("INVENTED_FILE_PATH");
+        File file = FileImpl.Companion.from(path);
         mAnyZipFile.prepareToUse(file);
 
         //Act
@@ -77,15 +77,16 @@ public class ZipFileTests {
 
         //Assertions
         assertThat(collectionOfInnerFiles,hasSize(10));
-        assertThat(collectionOfInnerFiles.getPathsAsString(),containsInAnyOrder("mimetype",
-                "META-INF/container.xml",
-                "OEBPS/pgepub.css",
-                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-0.txt.html",
-                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-1.txt.html",
-                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-2.txt.html",
-                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-3.txt.html",
-                "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-4.txt.html",
-                "OEBPS/toc.ncx",
-                "OEBPS/content.opf"));
+        assertThat(collectionOfInnerFiles.getPathsAsString(),containsInAnyOrder(
+            "mimetype",
+            "META-INF/container.xml",
+            "OEBPS/pgepub.css",
+            "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-0.txt.html",
+            "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-1.txt.html",
+            "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-2.txt.html",
+            "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-3.txt.html",
+            "OEBPS/@public@vhost@g@gutenberg@html@files@32315@32315-8-4.txt.html",
+            "OEBPS/toc.ncx",
+            "OEBPS/content.opf"));
     }
 }
