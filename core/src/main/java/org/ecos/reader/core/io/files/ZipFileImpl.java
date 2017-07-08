@@ -12,7 +12,6 @@ import reader.ecos.org.core.io.files.exceptions.UnknownError;
 
 import static java.lang.String.format;
 
-@SuppressWarnings("unused")
 public class ZipFileImpl implements ZipFile {
     private File mFileToWorkWith;
 
