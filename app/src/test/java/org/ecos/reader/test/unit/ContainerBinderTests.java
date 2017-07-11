@@ -20,7 +20,7 @@ public class ContainerBinderTests {
         String containerXML = "<?xml version='1.0' encoding='utf-8'?>\n" +
                 "<container xmlns=\"urn:oasis:names:tc:opendocument:xmlns:container\" version=\"1.0\">\n" +
                 "  <rootfiles>\n" +
-                "    <rootfile media-type=\"application/oebps-package+xml\" full-path=\"OEBPS/org.ecos.reader.core.epub.pojos.content.opf\"/>\n" +
+                "    <rootfile media-type=\"application/oebps-package+xml\" full-path=\"OEBPS/content.opf\"/>\n" +
                 "  </rootfiles>\n" +
                 "</container>";
 
@@ -29,7 +29,7 @@ public class ContainerBinderTests {
 
         assertThat(container.getRootFiles(), hasSize(1));
         RootFile first = container.getRootFiles().first();
-        assertThat(first.getFullPath(), is(equalTo("OEBPS/org.ecos.reader.core.epub.pojos.content.opf")));
+        assertThat(first.getFullPath(), is(equalTo("OEBPS/content.opf")));
         assertThat(first.getMediaType(), is(equalTo("application/oebps-package+xml")));
     }
 
