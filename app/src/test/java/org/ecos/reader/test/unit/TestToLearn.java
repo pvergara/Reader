@@ -2,9 +2,9 @@ package org.ecos.reader.test.unit;
 
 import com.thoughtworks.xstream.XStream;
 
-import org.ecos.reader.core.epub.pojos.Container;
-import org.ecos.reader.core.epub.pojos.RootFile;
-import org.ecos.reader.core.epub.pojos.RootFiles;
+import org.ecos.reader.core.epub.pojos.container.Container;
+import org.ecos.reader.core.epub.pojos.container.RootFile;
+import org.ecos.reader.core.epub.pojos.container.RootFiles;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

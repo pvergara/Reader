@@ -1,4 +1,4 @@
-package org.ecos.reader.core.epub.pojos;
+package org.ecos.reader.core.epub.pojos.container;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
