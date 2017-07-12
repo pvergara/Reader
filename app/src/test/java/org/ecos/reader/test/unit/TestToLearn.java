@@ -50,26 +50,24 @@ public class TestToLearn {
         URL resourceUrl = classLoader.getResource("historia_de_la_vida_del_buscOn_llamado_don_pablos.epub");
         File file = new File(resourceUrl.getPath());
 
-        try(
+        try (
                 // we open the zip file using a java 7 try with resources block so
                 // that we don't need a finally.
                 ZipInputStream stream = new ZipInputStream(new FileInputStream(file))
-        )
-        {
+        ) {
 
             // now iterate through each file in the zip archive. The get
             // next entry call will return a ZipEntry for each file in
             // the stream
             ZipEntry entry;
-            while((entry = stream.getNextEntry())!=null)
-            {
+            while ((entry = stream.getNextEntry()) != null) {
                 // We can read the file information from the ZipEntry.
                 String fileInfo = String.format(
-                    Locale.getDefault(),
-                    "Entry: [%s] len %d added %TD",
-                    entry.getName(), entry.getSize(),
-                    new Date(entry.getTime())
-                    );
+                        Locale.getDefault(),
+                        "Entry: [%s] len %d added %TD",
+                        entry.getName(), entry.getSize(),
+                        new Date(entry.getTime())
+                );
 
                 System.out.println(fileInfo);
 
@@ -96,8 +94,8 @@ public class TestToLearn {
             while ((entry = zipStream.getNextEntry()) != null) {
                 if (
                         entry.getName().equals("META-INF/container.xml") ||
-                        entry.getName().endsWith("org.ecos.reader.core.epub.pojos.content.opf")
-                ) {
+                                entry.getName().endsWith("org.ecos.reader.core.epub.pojos.content.opf")
+                        ) {
                     Scanner scanner = new Scanner(zipStream);
                     while (scanner.hasNextLine()) {
                         System.out.println(scanner.nextLine());
@@ -141,10 +139,10 @@ public class TestToLearn {
 
                     Container container = (Container) xstream.fromXML(zipStream);
 
-                    assertThat(container.getRootFiles(),hasSize(1));
+                    assertThat(container.getRootFiles(), hasSize(1));
                     RootFile first = container.getRootFiles().first();
-                    assertThat(first.getFullPath(),is(equalTo("OEBPS/org.ecos.reader.core.epub.pojos.content.opf")));
-                    assertThat(first.getMediaType(),is(equalTo("application/oebps-package+xml")));
+                    assertThat(first.getFullPath(), is(equalTo("OEBPS/org.ecos.reader.core.epub.pojos.content.opf")));
+                    assertThat(first.getMediaType(), is(equalTo("application/oebps-package+xml")));
                 }
             }
         } catch (IOException e) {
@@ -152,6 +150,4 @@ public class TestToLearn {
             e.printStackTrace();
         }
     }
-
-
 }
