@@ -1,13 +1,18 @@
-package org.ecos.reader.test.unit;
+package org.ecos.core.test.unit;
 
 import org.ecos.reader.core.epub.binders.ContainerBinder;
 import org.ecos.reader.core.epub.binders.ContainerBinderImpl;
 import org.ecos.reader.core.epub.pojos.container.Container;
 import org.ecos.reader.core.epub.pojos.container.RootFile;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 
@@ -28,7 +33,7 @@ public class ContainerBinderTests {
 
         Container container = binder.extractContainerFrom(containerXML);
 
-        assertThat(container.getRootFiles(), hasSize(1));
+        assertThat(container.getRootFiles(), Matchers.hasSize(1));
         RootFile first = container.getRootFiles().first();
         assertThat(first.getFullPath(), is(equalTo("OEBPS/content.opf")));
         assertThat(first.getMediaType(), is(equalTo("application/oebps-package+xml")));

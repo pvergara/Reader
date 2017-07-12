@@ -1,6 +1,4 @@
-package org.ecos.reader.test.unit;
-
-import android.support.annotation.NonNull;
+package org.ecos.core.test.unit;
 
 import org.ecos.reader.core.epub.binders.ContentBinder;
 import org.ecos.reader.core.epub.binders.ContentBinderImpl;
@@ -23,20 +21,19 @@ public class ContentBinderTests {
 
         Content content = binder.extractContentFrom(contentXML);
 
-        assertThat(content.getMetadata().getRights(),is(equalTo("Public domain in the USA.")));
-        assertThat(content.getMetadata().getIdentifier(),is(equalTo("http://www.gutenberg.org/ebooks/36453")));
-        assertThat(content.getMetadata().getCreator(),is(equalTo("Arthur Conan Doyle")));
-        assertThat(content.getMetadata().getContributor(),is(equalTo("Juan L. Iribas")));
-        assertThat(content.getMetadata().getTitle(),is(equalTo("La guardia blanca / novela histórica escrita en inglés")));
-        assertThat(content.getMetadata().getLanguage(),is(equalTo("es")));
+        assertThat(content.getMetadata().getRights(), is(equalTo("Public domain in the USA.")));
+        assertThat(content.getMetadata().getIdentifier(), is(equalTo("http://www.gutenberg.org/ebooks/36453")));
+        assertThat(content.getMetadata().getCreator(), is(equalTo("Arthur Conan Doyle")));
+        assertThat(content.getMetadata().getContributor(), is(equalTo("Juan L. Iribas")));
+        assertThat(content.getMetadata().getTitle(), is(equalTo("La guardia blanca / novela histórica escrita en inglés")));
+        assertThat(content.getMetadata().getLanguage(), is(equalTo("es")));
 
         Item manifestItem = content.lookForManifestItemWith(item->item.getId().equals("ncx"));
 
-        assertThat(manifestItem.getHypermediaReference(),is(equalTo("toc.ncx")));
+        assertThat(manifestItem.getHypermediaReference(), is(equalTo("toc.ncx")));
 
     }
 
-    @NonNull
     private String getContainerAsXMLString() {
         return "" +
                 "<package " +
