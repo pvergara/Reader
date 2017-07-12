@@ -17,7 +17,8 @@ public class ContainerBinderTests {
     public void givingACorrectContainerXMLThenTheResultMustBeCorrect() {
         ContainerBinder binder = new ContainerBinderImpl();
 
-        String containerXML = "<?xml version='1.0' encoding='utf-8'?>\n" +
+        String containerXML = "" +
+                "<?xml version='1.0' encoding='utf-8'?>\n" +
                 "<container xmlns=\"urn:oasis:names:tc:opendocument:xmlns:container\" version=\"1.0\">\n" +
                 "  <rootfiles>\n" +
                 "    <rootfile media-type=\"application/oebps-package+xml\" full-path=\"OEBPS/content.opf\"/>\n" +

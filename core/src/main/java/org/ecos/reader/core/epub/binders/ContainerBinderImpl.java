@@ -12,7 +12,6 @@ public class ContainerBinderImpl implements ContainerBinder {
     public Container extractContainerFrom(String containerXML) {
         XStream xstream = new XStream();
 
-
         xstream.alias("container", Container.class);
         xstream.alias("rootfiles", RootFiles.class);
         xstream.alias("rootfile", RootFile.class);
