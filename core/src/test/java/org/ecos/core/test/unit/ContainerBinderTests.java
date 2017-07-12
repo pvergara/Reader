@@ -40,7 +40,7 @@ public class ContainerBinderTests {
     }
 
     @Test
-    public void givingAnSubtleIncorrectContainerXMLThenTheResultMustBeCorrect() throws Exception {
+    public void givingAnSubtleIncorrectContainerXMLThenTheResultMustBeIncorrect() throws Exception {
         throw new Exception("TODO");
     }
 }
