@@ -12,28 +12,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContentBinderTests {
-    @Test
-    public void givingACorrectContainerXMLThenTheResultMustBeCorrect() throws DoNoExistsException {
-        ContentBinder binder = new ContentBinderImpl();
-
-        String contentXML = getContainerAsXMLString();
-
-
-        Content content = binder.extractContentFrom(contentXML);
-
-        assertThat(content.getMetadata().getRights(), is(equalTo("Public domain in the USA.")));
-        assertThat(content.getMetadata().getIdentifier(), is(equalTo("http://www.gutenberg.org/ebooks/36453")));
-        assertThat(content.getMetadata().getCreator(), is(equalTo("Arthur Conan Doyle")));
-        assertThat(content.getMetadata().getContributor(), is(equalTo("Juan L. Iribas")));
-        assertThat(content.getMetadata().getTitle(), is(equalTo("La guardia blanca / novela histórica escrita en inglés")));
-        assertThat(content.getMetadata().getLanguage(), is(equalTo("es")));
-
-        Item manifestItem = content.lookForManifestItemWith(item->item.getId().equals("ncx"));
-
-        assertThat(manifestItem.getHypermediaReference(), is(equalTo("toc.ncx")));
-
-    }
-
     private String getContainerAsXMLString() {
         return "" +
                 "<package " +
@@ -94,6 +72,33 @@ public class ContentBinderTests {
                 "    <itemref idref=\"item14\" linear=\"yes\"/>\n" +
                 "  </spine>\n" +
                 "</package>";
+    }
+
+    @Test
+    public void givingACorrectContainerXMLThenTheResultMustBeCorrect() throws DoNoExistsException {
+        ContentBinder binder = new ContentBinderImpl();
+
+        String contentXML = getContainerAsXMLString();
+
+
+        Content content = binder.extractContentFrom(contentXML);
+
+        assertThat(content.getMetadata().getRights(), is(equalTo("Public domain in the USA.")));
+        assertThat(content.getMetadata().getIdentifier(), is(equalTo("http://www.gutenberg.org/ebooks/36453")));
+        assertThat(content.getMetadata().getCreator(), is(equalTo("Arthur Conan Doyle")));
+        assertThat(content.getMetadata().getContributor(), is(equalTo("Juan L. Iribas")));
+        assertThat(content.getMetadata().getTitle(), is(equalTo("La guardia blanca / novela histórica escrita en inglés")));
+        assertThat(content.getMetadata().getLanguage(), is(equalTo("es")));
+
+        Item manifestItem = content.lookForManifestItemWith(item->item.getId().equals("ncx"));
+
+        assertThat(manifestItem.getHyperlinkReference(), is(equalTo("toc.ncx")));
+
+    }
+
+    @Test
+    public void givingAnSubtleIncorrectContentXMLThenTheResultMustBeIncorrect() throws Exception {
+        throw new Exception("TODO");
     }
 
 }

@@ -26,7 +26,7 @@ public class Item {
         return mMediaType;
     }
 
-    public String getHypermediaReference() {
+    public String getHyperlinkReference() {
         return mHypermediaReference;
     }
 }
