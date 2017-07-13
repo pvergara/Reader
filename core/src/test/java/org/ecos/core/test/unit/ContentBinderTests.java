@@ -10,7 +10,10 @@ import org.testng.annotations.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class ContentBinderTests {
     private String getContainerAsXMLString() {
         return "" +
@@ -89,6 +92,10 @@ public class ContentBinderTests {
         assertThat(content.getMetadata().getContributor(), is(equalTo("Juan L. Iribas")));
         assertThat(content.getMetadata().getTitle(), is(equalTo("La guardia blanca / novela histórica escrita en inglés")));
         assertThat(content.getMetadata().getLanguage(), is(equalTo("es")));
+
+        assertThat(content.getMetadata().getSubjects(), hasSize(7));
+        assertThat(content.getMetadata().getSubjects(), hasItem("British -- France -- Fiction"));
+        assertThat(content.getMetadata().getSubjects(), hasItem("Hundred Years' War, 1339-1453 -- Fiction"));
 
         Item manifestItem = content.lookForManifestItemWith(item->item.getId().equals("ncx"));
 

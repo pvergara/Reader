@@ -1,9 +1,15 @@
 package org.ecos.reader.core.epub.pojos.content;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @XStreamAlias("metadata")
-public class Metadata {
+public class Metadata extends AbstractCollection<String> {
     @XStreamAlias("dc:rights")
     private String mRights;
     @XStreamAlias("dc:identifier")
@@ -16,6 +22,13 @@ public class Metadata {
     private String mTitle;
     @XStreamAlias("dc:language")
     private String mLanguage;
+
+    @XStreamImplicit(itemFieldName = "dc:subject")
+    private List<String> mSubjects;
+
+    public Metadata() {
+        mSubjects = new ArrayList<>();
+    }
 
     public String getRights() {
         return mRights;
@@ -39,5 +52,25 @@ public class Metadata {
 
     public String getLanguage() {
         return mLanguage;
+    }
+
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public Iterator<String> iterator() {
+        return mSubjects.iterator();
+    }
+
+    @Override
+    public boolean add(String subject) {
+        return mSubjects.add(subject);
+    }
+
+    @Override
+    public int size() {
+        return mSubjects.size();
+    }
+
+    public List<String> getSubjects() {
+        return mSubjects;
     }
 }

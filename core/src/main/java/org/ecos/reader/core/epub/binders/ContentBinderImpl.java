@@ -25,6 +25,7 @@ public class ContentBinderImpl implements ContentBinder {
         xstream.alias("item", Item.class);
         xstream.processAnnotations(Item.class);
 
+        xstream.addImplicitCollection(Metadata.class,"mSubjects",String.class);
         xstream.addImplicitCollection(Manifest.class,"mManifestItems",Item.class);
 
         xstream.ignoreUnknownElements();
