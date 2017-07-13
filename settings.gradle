@@ -1,1 +1,1 @@
-include ':app', ':core', ':core.interfaces.functional'
+include ':app', ':core', ':functional'
