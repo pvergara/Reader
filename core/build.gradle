@@ -10,10 +10,11 @@ dependencies {
     compile ("com.thoughtworks.xstream:xstream:$xstream_version") {
         exclude group: 'xmlpull', module: 'xmlpull'
     }
+    compile project(':core.interfaces.functional')
 
-    testImplementation "org.testng:testng:$testng_version"
-    testImplementation "org.mockito:mockito-core:$mokito_core_version"
-    testImplementation "org.hamcrest:hamcrest-library:$hamcrest_library_version"
+    testCompile "org.testng:testng:$testng_version"
+    testCompile "org.mockito:mockito-core:$mokito_core_version"
+    testCompile "org.hamcrest:hamcrest-library:$hamcrest_library_version"
 
     testCompile "com.thoughtworks.xstream:xstream:$xstream_version"
 

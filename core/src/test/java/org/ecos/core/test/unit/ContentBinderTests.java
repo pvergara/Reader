@@ -79,13 +79,14 @@ public class ContentBinderTests {
 
     @Test
     public void givingACorrectContainerXMLThenTheResultMustBeCorrect() throws DoNoExistsException {
+        //Arrange
         ContentBinder binder = new ContentBinderImpl();
-
         String contentXML = getContainerAsXMLString();
 
-
+        //Act
         Content content = binder.extractContentFrom(contentXML);
 
+        //Assertions
         assertThat(content.getMetadata().getRights(), is(equalTo("Public domain in the USA.")));
         assertThat(content.getMetadata().getIdentifier(), is(equalTo("http://www.gutenberg.org/ebooks/36453")));
         assertThat(content.getMetadata().getCreator(), is(equalTo("Arthur Conan Doyle")));
