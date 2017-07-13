@@ -40,4 +40,5 @@ dependencies {
     testImplementation project(':core')
 
     testImplementation "com.thoughtworks.xstream:xstream:$xstream_version"
+    testCompile project(path: ':epub')
 }

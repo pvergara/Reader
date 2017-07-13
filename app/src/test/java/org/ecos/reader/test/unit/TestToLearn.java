@@ -2,9 +2,9 @@ package org.ecos.reader.test.unit;
 
 import com.thoughtworks.xstream.XStream;
 
-import org.ecos.reader.core.epub.pojos.container.Container;
-import org.ecos.reader.core.epub.pojos.container.RootFile;
-import org.ecos.reader.core.epub.pojos.container.RootFiles;
+import org.ecos.epub.pojos.container.Container;
+import org.ecos.epub.pojos.container.RootFile;
+import org.ecos.epub.pojos.container.RootFiles;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -94,7 +94,7 @@ public class TestToLearn {
             while ((entry = zipStream.getNextEntry()) != null) {
                 if (
                         entry.getName().equals("META-INF/container.xml") ||
-                                entry.getName().endsWith("org.ecos.reader.core.epub.pojos.content.opf")
+                                entry.getName().endsWith("org.ecos.epub.pojos.content.opf")
                         ) {
                     Scanner scanner = new Scanner(zipStream);
                     while (scanner.hasNextLine()) {
@@ -141,7 +141,7 @@ public class TestToLearn {
 
                     assertThat(container.getRootFiles(), hasSize(1));
                     RootFile first = container.getRootFiles().first();
-                    assertThat(first.getFullPath(), is(equalTo("OEBPS/org.ecos.reader.core.epub.pojos.content.opf")));
+                    assertThat(first.getFullPath(), is(equalTo("OEBPS/org.ecos.epub.pojos.content.opf")));
                     assertThat(first.getMediaType(), is(equalTo("application/oebps-package+xml")));
                 }
             }

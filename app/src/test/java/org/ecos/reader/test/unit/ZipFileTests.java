@@ -1,12 +1,12 @@
 package org.ecos.reader.test.unit;
 
-import org.ecos.reader.core.io.files.File;
-import org.ecos.reader.core.io.files.FileCollection;
-import org.ecos.reader.core.io.files.FileImpl;
-import org.ecos.reader.core.io.files.Path;
-import org.ecos.reader.core.io.files.PathImpl;
-import org.ecos.reader.core.io.files.ZipFile;
-import org.ecos.reader.core.io.files.ZipFileImpl;
+import org.ecos.core.files.File;
+import org.ecos.core.files.FileCollection;
+import org.ecos.core.files.FileImpl;
+import org.ecos.core.files.Path;
+import org.ecos.core.files.PathImpl;
+import org.ecos.core.files.ZipFile;
+import org.ecos.core.files.ZipFileImpl;
 import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
 import org.ecos.reader.core.io.files.exceptions.UnknownError;
 import org.testng.annotations.BeforeMethod;
