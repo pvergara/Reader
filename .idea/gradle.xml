@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/epub" />
             <option value="$PROJECT_DIR$/files" />
-            <option value="$PROJECT_DIR$/functional" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

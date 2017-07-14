@@ -4,7 +4,6 @@ dependencies {
     compile ("com.thoughtworks.xstream:xstream:$xstream_version") {
         exclude group: 'xmlpull', module: 'xmlpull'
     }
-    compile project(':functional')
 
     testCompile "org.testng:testng:$testng_version"
     testCompile "org.mockito:mockito-core:$mokito_core_version"

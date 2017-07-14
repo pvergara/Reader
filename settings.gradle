@@ -1,1 +1,1 @@
-include ':app', ':core', ':functional', ':files', ':epub'
+include ':app', ':core', ':files', ':epub'
