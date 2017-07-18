@@ -4,6 +4,7 @@ import org.ecos.epub.binders.toc.TableOfContentsBinder;
 import org.ecos.epub.binders.toc.TableOfContentsBinderImpl;
 import org.ecos.epub.pojos.toc.Metadata;
 import org.ecos.epub.pojos.toc.TableOfContents;
+import org.ecos.epub.pojos.toc.Title;
 import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
 import org.testng.annotations.Test;
 
@@ -269,5 +270,6 @@ public class TableOfContentsTests {
         //Assertions
         assertThat(tableOfContents.getHeadCollection(),hasSize(5));
         assertThat(tableOfContents.getFirstMetadata(), is(equalTo(Metadata.from("http://www.gutenberg.org/ebooks/36453","dtb:uid"))));
+        assertThat(tableOfContents.getTitle(), is(equalTo(Title.fromText("La guardia blanca\nnovela histórica escrita en inglés"))));
     }
 }

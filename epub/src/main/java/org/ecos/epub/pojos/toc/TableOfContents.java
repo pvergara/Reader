@@ -8,6 +8,8 @@ import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
 public class TableOfContents {
     @XStreamAlias("head")
     private HeadCollection mHeadCollection;
+    @XStreamAlias("docTitle")
+    private Title mTitle;
 
     public HeadCollection getHeadCollection() {
         return mHeadCollection;
@@ -18,4 +20,10 @@ public class TableOfContents {
             throw new DoNoExistsException("The collection do not exists or is empty");
         return mHeadCollection.getMetaCollection().get(0);
     }
+
+    public Title getTitle() {
+        return mTitle;
+    }
+
+
 }
