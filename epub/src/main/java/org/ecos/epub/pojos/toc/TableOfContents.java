@@ -6,10 +6,15 @@ import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
 
 @XStreamAlias("ncx")
 public class TableOfContents {
+
     @XStreamAlias("head")
     private HeadCollection mHeadCollection;
+
     @XStreamAlias("docTitle")
     private Title mTitle;
+
+    @XStreamAlias("navMap")
+    private NavigationMap mNavigationMap;
 
     public HeadCollection getHeadCollection() {
         return mHeadCollection;

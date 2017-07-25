@@ -270,6 +270,9 @@ public class TableOfContentsTests {
         //Assertions
         assertThat(tableOfContents.getHeadCollection(),hasSize(5));
         assertThat(tableOfContents.getFirstMetadata(), is(equalTo(Metadata.from("http://www.gutenberg.org/ebooks/36453","dtb:uid"))));
+
         assertThat(tableOfContents.getTitle(), is(equalTo(Title.fromText("La guardia blanca\nnovela histórica escrita en inglés"))));
+
+
     }
 }
