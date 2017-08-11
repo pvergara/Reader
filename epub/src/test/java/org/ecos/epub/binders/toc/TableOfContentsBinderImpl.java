@@ -33,6 +33,8 @@ public class TableOfContentsBinderImpl implements TableOfContentsBinder {
         xstream.addImplicitCollection(HeadCollection.class, "mMetaCollection", Metadata.class);
         xstream.addImplicitCollection(NavigationMap.class, "mNavigationPoints", NavigationPoint.class);
 
+        xstream.addImplicitCollection(NavigationPoint.class, "mInnerNavigationPoints", NavigationPoint.class);
+
         xstream.ignoreUnknownElements();
 
         return (TableOfContents) xstream.fromXML(tableOfContentsAsXML);

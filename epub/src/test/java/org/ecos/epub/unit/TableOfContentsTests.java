@@ -5,7 +5,9 @@ import org.ecos.epub.binders.toc.TableOfContentsBinderImpl;
 import org.ecos.epub.pojos.toc.Metadata;
 import org.ecos.epub.pojos.toc.TableOfContents;
 import org.ecos.epub.pojos.toc.Title;
+import org.ecos.reader.core.exceptions.CollectionOutOfBoundException;
 import org.ecos.reader.core.exceptions.DoNoExistsException;
+import org.ecos.reader.core.exceptions.EmptyCollectionException;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -14,6 +16,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 public class TableOfContentsTests {
+    private static final int SECOND = 1;
     private String getTableOfContentsAsXMLString() {
         return "" +
                 "<?xml version='1.0' encoding='UTF-8'?>\n" +
@@ -259,7 +262,7 @@ public class TableOfContentsTests {
     }
 
     @Test
-    public void givingSomeRightTOCXMLThenTheResultMustBeCorrect() throws DoNoExistsException {
+    public void givingSomeRightTOCXMLThenTheResultMustBeCorrect() throws DoNoExistsException, CollectionOutOfBoundException, EmptyCollectionException {
         //Arrange
         TableOfContentsBinder binder = new TableOfContentsBinderImpl();
         String tableOfContentsAsXML = getTableOfContentsAsXMLString();
@@ -273,6 +276,8 @@ public class TableOfContentsTests {
 
         assertThat(tableOfContents.getTitle(), is(equalTo(Title.fromText("La guardia blanca\nnovela histórica escrita en inglés"))));
 
+        assertThat(tableOfContents.getNavigationMap(), hasSize(equalTo(2)));
 
+        assertThat(tableOfContents.getNavigationMap().getNavigationPoint(SECOND).getInnerNavigationPoints(), hasSize(equalTo(35)));
     }
 }

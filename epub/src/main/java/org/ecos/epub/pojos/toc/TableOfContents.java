@@ -31,4 +31,7 @@ public class TableOfContents {
     }
 
 
+    public NavigationMap getNavigationMap() {
+        return mNavigationMap;
+    }
 }
