@@ -2,7 +2,7 @@ package org.ecos.epub.pojos.toc;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
+import org.ecos.reader.core.exceptions.DoNoExistsException;
 
 @XStreamAlias("ncx")
 public class TableOfContents {

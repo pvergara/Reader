@@ -3,7 +3,7 @@ package org.ecos.epub.pojos.content;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import org.ecos.core.interfaces.functional.Function1;
-import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
+import org.ecos.reader.core.exceptions.DoNoExistsException;
 
 @XStreamAlias("package")
 public class Content {

@@ -1,13 +1,13 @@
 package org.ecos.core.files
 
-import org.ecos.reader.core.io.files.exceptions.DoNoExistsException
+import org.ecos.reader.core.exceptions.DoNoExistsException
 
 import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.zip.ZipInputStream
 
-import org.ecos.reader.core.io.files.exceptions.UnknownError
+import org.ecos.reader.core.exceptions.UnknownError
 
 import java.lang.String.format
 

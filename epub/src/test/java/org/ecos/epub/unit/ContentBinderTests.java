@@ -4,7 +4,7 @@ import org.ecos.epub.binders.ContentBinder;
 import org.ecos.epub.binders.ContentBinderImpl;
 import org.ecos.epub.pojos.content.Content;
 import org.ecos.epub.pojos.content.Item;
-import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
+import org.ecos.reader.core.exceptions.DoNoExistsException;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;

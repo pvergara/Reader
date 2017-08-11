@@ -7,8 +7,8 @@ import org.ecos.core.files.Path;
 import org.ecos.core.files.PathImpl;
 import org.ecos.core.files.ZipFile;
 import org.ecos.core.files.ZipFileImpl;
-import org.ecos.reader.core.io.files.exceptions.DoNoExistsException;
-import org.ecos.reader.core.io.files.exceptions.UnknownError;
+import org.ecos.reader.core.exceptions.DoNoExistsException;
+import org.ecos.reader.core.exceptions.UnknownError;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

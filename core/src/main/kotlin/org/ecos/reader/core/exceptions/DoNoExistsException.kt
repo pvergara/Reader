@@ -1,3 +1,3 @@
-package org.ecos.reader.core.io.files.exceptions
+package org.ecos.reader.core.exceptions
 
 class DoNoExistsException(message: String) : Throwable(message)
