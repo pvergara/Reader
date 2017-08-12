@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/Reader.iml" filepath="$PROJECT_DIR$/Reader.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epub/epub.iml" filepath="$PROJECT_DIR$/epub/epub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/files/files.iml" filepath="$PROJECT_DIR$/files/files.iml" />
     </modules>
   </component>
 </project>

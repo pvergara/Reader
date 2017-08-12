@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+group = 'org.ecos.core'
+version = '0.1'
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
+
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile project(':core')
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
