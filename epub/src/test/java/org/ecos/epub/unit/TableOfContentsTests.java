@@ -3,6 +3,7 @@ package org.ecos.epub.unit;
 import org.ecos.epub.binders.TableOfContentsBinder;
 import org.ecos.epub.binders.TableOfContentsBinderImpl;
 import org.ecos.epub.pojos.toc.Metadata;
+import org.ecos.epub.pojos.toc.NavigationPoint;
 import org.ecos.epub.pojos.toc.TableOfContents;
 import org.ecos.epub.pojos.toc.Title;
 import org.ecos.reader.core.exceptions.CollectionOutOfBoundException;
@@ -16,8 +17,10 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 public class TableOfContentsTests {
+    private static final int FIRST = 0;
     private static final int SECOND = 1;
-    private String getTableOfContentsAsXMLString() {
+
+    private String getTableOfContentsAsString() {
         return "" +
                 "<?xml version='1.0' encoding='UTF-8'?>\n" +
                 "\n" +
@@ -262,10 +265,10 @@ public class TableOfContentsTests {
     }
 
     @Test
-    public void givingSomeRightTOCXMLThenTheResultMustBeCorrect() throws DoNoExistsException, CollectionOutOfBoundException, EmptyCollectionException {
+    public void givingSomeRightTableOfContentsThenTheResultMustBeCorrect() throws DoNoExistsException, CollectionOutOfBoundException, EmptyCollectionException {
         //Arrange
         TableOfContentsBinder binder = new TableOfContentsBinderImpl();
-        String tableOfContentsAsXML = getTableOfContentsAsXMLString();
+        String tableOfContentsAsXML = getTableOfContentsAsString();
 
         //Act
         TableOfContents tableOfContents = binder.extractFrom(tableOfContentsAsXML);
@@ -274,10 +277,14 @@ public class TableOfContentsTests {
         assertThat(tableOfContents.getHeadCollection(),hasSize(5));
         assertThat(tableOfContents.getFirstMetadata(), is(equalTo(Metadata.from("http://www.gutenberg.org/ebooks/36453","dtb:uid"))));
 
-        assertThat(tableOfContents.getTitle(), is(equalTo(Title.fromText("La guardia blanca\nnovela histórica escrita en inglés"))));
+        assertThat(tableOfContents.getTitle(), is(equalTo(Title.fromText("La guardia blanca\nnovela histórica escrita en inglés"))));//Ummm... written in English...hehehe
 
         assertThat(tableOfContents.getNavigationMap(), hasSize(equalTo(2)));
 
-        assertThat(tableOfContents.getNavigationMap().getNavigationPoint(SECOND).getInnerNavigationPoints(), hasSize(equalTo(35)));
+        NavigationPoint firstNavigationPoint = tableOfContents.getNavigationMap().getNavigationPoint(FIRST);
+        assertThat(firstNavigationPoint.getInnerNavigationPoints(), hasSize(equalTo(0)));
+
+        NavigationPoint secondNavigationPoint = tableOfContents.getNavigationMap().getNavigationPoint(SECOND);
+        assertThat(secondNavigationPoint.getInnerNavigationPoints(), hasSize(equalTo(35)));
     }
 }

@@ -39,12 +39,20 @@ public class NavigationPoint  extends AbstractCollection<NavigationPoint> {
     private List<NavigationPoint> mInnerNavigationPoints;
 
     public NavigationPoint() {
-        mInnerNavigationPoints = new ArrayList<>();
+        setNewCollectionIfNull();
     }
 
     public List<NavigationPoint> getInnerNavigationPoints() {
+        setNewCollectionIfNull();
+
         return mInnerNavigationPoints;
     }
+
+    private void setNewCollectionIfNull() {
+        if(mInnerNavigationPoints == null)
+            mInnerNavigationPoints = new ArrayList<>();
+    }
+
     @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<NavigationPoint> iterator() {
