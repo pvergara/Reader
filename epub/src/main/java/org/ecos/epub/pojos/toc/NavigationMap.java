@@ -43,7 +43,7 @@ public class NavigationMap extends AbstractCollection<NavigationPoint> {
     private void collectionGuardClauses(int index) throws EmptyCollectionException, CollectionOutOfBoundException {
         if(mNavigationPoints==null || mNavigationPoints.size()==0)
             throw new EmptyCollectionException();
-        if(index<=0 || index>=mNavigationPoints.size())
+        if(index<0 || index>=mNavigationPoints.size())
             throw new CollectionOutOfBoundException();
     }
 }
