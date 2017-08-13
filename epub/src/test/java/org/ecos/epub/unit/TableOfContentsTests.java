@@ -1,7 +1,7 @@
 package org.ecos.epub.unit;
 
-import org.ecos.epub.binders.toc.TableOfContentsBinder;
-import org.ecos.epub.binders.toc.TableOfContentsBinderImpl;
+import org.ecos.epub.binders.TableOfContentsBinder;
+import org.ecos.epub.binders.TableOfContentsBinderImpl;
 import org.ecos.epub.pojos.toc.Metadata;
 import org.ecos.epub.pojos.toc.TableOfContents;
 import org.ecos.epub.pojos.toc.Title;

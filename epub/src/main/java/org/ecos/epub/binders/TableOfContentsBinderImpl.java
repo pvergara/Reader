@@ -1,4 +1,4 @@
-package org.ecos.epub.binders.toc;
+package org.ecos.epub.binders;
 
 import com.thoughtworks.xstream.XStream;
 
