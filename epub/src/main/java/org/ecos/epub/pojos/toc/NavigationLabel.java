@@ -3,8 +3,10 @@ package org.ecos.epub.pojos.toc;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
-class NavigationLabel {
-    @XStreamAlias("Text")
+import org.ecos.core.interfaces.AsString;
+
+public class NavigationLabel implements AsString {
+    @XStreamAlias("text")
     private String mText;
 
     @XStreamAlias("xml:lang")
@@ -14,4 +16,8 @@ class NavigationLabel {
     @XStreamAsAttribute
     private String mDirection;
 
+    @Override
+    public String asString() {
+        return mText;
+    }
 }

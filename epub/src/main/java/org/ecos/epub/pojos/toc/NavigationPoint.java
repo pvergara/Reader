@@ -1,38 +1,38 @@
 package org.ecos.epub.pojos.toc;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
-import org.w3c.types.Identifier;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.ecos.reader.core.exceptions.ConversionException;
 
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAttribute;
-
 @XStreamAlias("navPoint")
-public class NavigationPoint  extends AbstractCollection<NavigationPoint> {
+public class NavigationPoint extends AbstractCollection<NavigationPoint> {
+
+    @XStreamAsAttribute
+    @XStreamAlias("id")
+    private String mId;
+
+    @XStreamAsAttribute
+    @XStreamAlias("playOrder")
+    private String mPlayOrder;
+
+    @XStreamAsAttribute
+    @XStreamAlias("class")
+    private String mClass;
+
     @XStreamAlias("navLabel")
     private NavigationLabel mNavigationLabel;
 
     @XStreamAlias("content")
     private Content mContent;
-
-    @XmlAttribute
-    @XStreamAlias("id")
-    private Identifier mId;
-    @XmlAttribute
-    @XStreamAlias("playOrder")
-    private String playOrder;
-
-    @XmlAttribute
-    @XStreamAlias("class")
-    private String mClass;
-
-
-
 
 
     @XStreamImplicit
@@ -49,7 +49,7 @@ public class NavigationPoint  extends AbstractCollection<NavigationPoint> {
     }
 
     private void setNewCollectionIfNull() {
-        if(mInnerNavigationPoints == null)
+        if (mInnerNavigationPoints == null)
             mInnerNavigationPoints = new ArrayList<>();
     }
 
@@ -69,4 +69,31 @@ public class NavigationPoint  extends AbstractCollection<NavigationPoint> {
         return mInnerNavigationPoints.add(navigationPoint);
     }
 
+    public String getLabel() {
+        return mNavigationLabel.asString();
+    }
+
+    public String getId() {
+        if (mId == null)
+            return "";
+
+        return mId;
+    }
+
+    public boolean isOrderANumber() {
+        return StringUtils.isNumeric(mPlayOrder);
+    }
+
+    public Long getPlayOrderAsLong() throws ConversionException {
+        try {
+            return NumberUtils.createLong(mPlayOrder);
+        } catch (NumberFormatException ignore) {
+            throw new ConversionException(String.format("There's no way to convert %s to a long", mPlayOrder));
+        }
+
+    }
+
+    public String getPlayOrderAsString() {
+        return mPlayOrder;
+    }
 }

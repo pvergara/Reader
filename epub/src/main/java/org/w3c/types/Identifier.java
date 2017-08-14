@@ -1,6 +1,11 @@
 package org.w3c.types;
 
-public class Identifier {
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+import org.ecos.core.interfaces.AsString;
+
+@XStreamAlias("id")
+public class Identifier implements AsString {
     private String mIdentifierAsString;
 
     public Identifier(String identifierAsString){
@@ -27,5 +32,9 @@ public class Identifier {
         return "Identifier{" +
                 "mIdentifierAsString='" + mIdentifierAsString + '\'' +
                 '}';
+    }
+
+    public String asString() {
+        return mIdentifierAsString;
     }
 }

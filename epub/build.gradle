@@ -1,6 +1,11 @@
 apply plugin: 'java'
 
 dependencies {
+    compile project(path: ':core')
+    compile project(path: ':files')
+
+    compile 'org.apache.commons:commons-lang3:3.6'
+
     compile ("com.thoughtworks.xstream:xstream:$xstream_version") {
         exclude group: 'xmlpull', module: 'xmlpull'
     }
@@ -11,8 +16,6 @@ dependencies {
 
     testCompile "com.thoughtworks.xstream:xstream:$xstream_version"
 
-    compile project(path: ':core')
-    compile project(path: ':files')
 }
 
 sourceCompatibility = '1.8'

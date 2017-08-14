@@ -7,11 +7,14 @@ import org.ecos.epub.pojos.toc.NavigationPoint;
 import org.ecos.epub.pojos.toc.TableOfContents;
 import org.ecos.epub.pojos.toc.Title;
 import org.ecos.reader.core.exceptions.CollectionOutOfBoundException;
+import org.ecos.reader.core.exceptions.ConversionException;
 import org.ecos.reader.core.exceptions.DoNoExistsException;
 import org.ecos.reader.core.exceptions.EmptyCollectionException;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
@@ -265,7 +268,7 @@ public class TableOfContentsTests {
     }
 
     @Test
-    public void givingSomeRightTableOfContentsThenTheResultMustBeCorrect() throws DoNoExistsException, CollectionOutOfBoundException, EmptyCollectionException {
+    public void givingSomeRightTableOfContentsThenTheResultMustBeCorrect() throws DoNoExistsException, CollectionOutOfBoundException, EmptyCollectionException, ConversionException {
         //Arrange
         TableOfContentsBinder binder = new TableOfContentsBinderImpl();
         String tableOfContentsAsXML = getTableOfContentsAsString();
@@ -286,5 +289,14 @@ public class TableOfContentsTests {
 
         NavigationPoint secondNavigationPoint = tableOfContents.getNavigationMap().getNavigationPoint(SECOND);
         assertThat(secondNavigationPoint.getInnerNavigationPoints(), hasSize(equalTo(35)));
+
+        NavigationPoint firstInnerNavigationPoint = secondNavigationPoint.getInnerNavigationPoints().get(FIRST);
+        assertThat(firstInnerNavigationPoint.getLabel(), is(equalTo("LA GUARDIA BLANCA")));
+
+        assertThat(firstInnerNavigationPoint.getPlayOrderAsString(), is(not(nullValue())));
+        assertThat(firstInnerNavigationPoint.isOrderANumber(), is(true));
+        assertThat(firstInnerNavigationPoint.getPlayOrderAsLong(), is(equalTo(3L)));
+
+        assertThat(firstInnerNavigationPoint.getId(), is(equalTo("np-3")));
     }
 }
