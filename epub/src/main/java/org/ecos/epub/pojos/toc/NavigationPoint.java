@@ -96,4 +96,8 @@ public class NavigationPoint extends AbstractCollection<NavigationPoint> {
     public String getPlayOrderAsString() {
         return mPlayOrder;
     }
+
+    public Content getContent() {
+        return mContent;
+    }
 }

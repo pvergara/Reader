@@ -298,5 +298,7 @@ public class TableOfContentsTests {
         assertThat(firstInnerNavigationPoint.getPlayOrderAsLong(), is(equalTo(3L)));
 
         assertThat(firstInnerNavigationPoint.getId(), is(equalTo("np-3")));
+
+        assertThat(firstInnerNavigationPoint.getContent().getSourceReference(), is(equalTo("@public@vhost@g@gutenberg@html@files@36453@36453-h@36453-h-0.htm.html#pgepubid00002")));
     }
 }

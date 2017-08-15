@@ -2,6 +2,7 @@ package org.ecos.epub.binders;
 
 import com.thoughtworks.xstream.XStream;
 
+import org.ecos.epub.pojos.content.Content;
 import org.ecos.epub.pojos.toc.HeadCollection;
 import org.ecos.epub.pojos.toc.Metadata;
 import org.ecos.epub.pojos.toc.NavigationLabel;
@@ -9,7 +10,6 @@ import org.ecos.epub.pojos.toc.NavigationMap;
 import org.ecos.epub.pojos.toc.NavigationPoint;
 import org.ecos.epub.pojos.toc.TableOfContents;
 import org.ecos.epub.pojos.toc.Title;
-import org.w3c.types.Identifier;
 
 public class TableOfContentsBinderImpl implements TableOfContentsBinder {
     @Override
@@ -25,7 +25,7 @@ public class TableOfContentsBinderImpl implements TableOfContentsBinder {
         xstream.alias("navMap", NavigationMap.class);
         xstream.alias("navPoint", NavigationPoint.class);
         xstream.alias("navLabel", NavigationLabel.class);
-        xstream.alias("id", Identifier.class);
+        xstream.alias("content", Content.class);
 
         xstream.processAnnotations(TableOfContents.class);
         xstream.processAnnotations(HeadCollection.class);
@@ -34,6 +34,7 @@ public class TableOfContentsBinderImpl implements TableOfContentsBinder {
         xstream.processAnnotations(NavigationMap.class);
         xstream.processAnnotations(NavigationPoint.class);
         xstream.processAnnotations(NavigationLabel.class);
+        xstream.processAnnotations(Content.class);
 
         xstream.addImplicitCollection(HeadCollection.class, "mMetaCollection", Metadata.class);
         xstream.addImplicitCollection(NavigationMap.class, "mNavigationPoints", NavigationPoint.class);
