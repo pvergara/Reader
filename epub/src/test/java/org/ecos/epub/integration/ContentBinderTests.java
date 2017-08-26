@@ -1,4 +1,4 @@
-package org.ecos.epub.unit;
+package org.ecos.epub.integration;
 
 import org.ecos.epub.binders.ContentBinder;
 import org.ecos.epub.binders.ContentBinderImpl;

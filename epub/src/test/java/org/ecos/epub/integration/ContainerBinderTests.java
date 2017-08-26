@@ -1,10 +1,9 @@
-package org.ecos.epub.unit;
+package org.ecos.epub.integration;
 
 import org.ecos.epub.binders.ContainerBinder;
 import org.ecos.epub.binders.ContainerBinderImpl;
 import org.ecos.epub.pojos.container.Container;
 import org.ecos.epub.pojos.container.RootFile;
-import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
