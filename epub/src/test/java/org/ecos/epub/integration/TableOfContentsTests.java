@@ -11,6 +11,7 @@ import org.ecos.reader.core.exceptions.ConversionException;
 import org.ecos.reader.core.exceptions.DoNoExistsException;
 import org.ecos.reader.core.exceptions.EmptyCollectionException;
 import org.testng.annotations.Test;
+import org.w3c.types.Identifier;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
@@ -297,7 +298,7 @@ public class TableOfContentsTests {
         assertThat(firstInnerNavigationPoint.isOrderANumber(), is(true));
         assertThat(firstInnerNavigationPoint.getPlayOrderAsLong(), is(equalTo(3L)));
 
-        assertThat(firstInnerNavigationPoint.getId(), is(equalTo("np-3")));
+        assertThat(firstInnerNavigationPoint.getId(), is(equalTo(Identifier.from("np-3"))));
 
         assertThat(firstInnerNavigationPoint.getContent().getSourceReference(), is(equalTo("@public@vhost@g@gutenberg@html@files@36453@36453-h@36453-h-0.htm.html#pgepubid00002")));
     }

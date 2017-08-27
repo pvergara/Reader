@@ -6,9 +6,15 @@ import org.ecos.core.interfaces.AsString;
 
 @XStreamAlias("id")
 public class Identifier implements AsString {
+    public static Identifier Empty = from("");
+
+    public static Identifier from(String identifierAsString) {
+        return new Identifier(identifierAsString);
+    }
+
     private String mIdentifierAsString;
 
-    public Identifier(String identifierAsString){
+    private Identifier(String identifierAsString){
         mIdentifierAsString = identifierAsString;
     }
 

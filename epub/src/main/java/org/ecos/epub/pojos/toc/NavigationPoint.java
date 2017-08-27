@@ -7,6 +7,7 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.ecos.reader.core.exceptions.ConversionException;
+import org.w3c.types.Identifier;
 
 import java.util.AbstractCollection;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class NavigationPoint extends AbstractCollection<NavigationPoint> {
 
     @XStreamAsAttribute
     @XStreamAlias("id")
-    private String mId;
+    private String mIdAsString;
 
     @XStreamAsAttribute
     @XStreamAlias("playOrder")
@@ -73,11 +74,11 @@ public class NavigationPoint extends AbstractCollection<NavigationPoint> {
         return mNavigationLabel.asString();
     }
 
-    public String getId() {
-        if (mId == null)
-            return "";
+    public Identifier getId() {
+        if (mIdAsString == null)
+            return Identifier.Empty;
 
-        return mId;
+        return Identifier.from(mIdAsString);
     }
 
     public boolean isOrderANumber() {
